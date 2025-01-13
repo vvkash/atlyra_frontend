@@ -1,19 +1,38 @@
-import acmeLogo from "../assets/images/acme.png";
-import quantumLogo from "../assets/images/quantum.png";
-import echoLogo from "../assets/images/echo.png";
-import celestialLogo from "../assets/images/celestial.png";
-import pulseLogo from "../assets/images/pulse.png";
-import apexLogo from "../assets/images/apex.png";
+"use client";
+
+import Image from "next/image";
+import ninjaLogo from "../assets/images/ninja.png";
+import stanleyLogo from "../assets/images/Stanley1.png";
+import ferrari_white from "../assets/images/ferrari.png"
 
 const images = [
-  { src: acmeLogo, alt: "Acme Logo" },
-  { src: quantumLogo, alt: "Quantum Logo" },
-  { src: echoLogo, alt: "Echo Logo" },
-  { src: celestialLogo, alt: "Celestial Logo" },
-  { src: pulseLogo, alt: "Pulse Logo" },
-  { src: apexLogo, alt: "Apex Logo" },
+  { src: ninjaLogo, alt: "ninja Logo" },
+  { src: stanleyLogo, alt: "stanley Logo" },
+  { src: ferrari_white, alt: "ferrari Logo" },
 ];
 
 export const LogoTicker = () => {
-  return null;
+  return (
+    <div className="bg-black text-white py-[72px]">
+      <div className="container mx-auto px-4">
+        <h2 className="text-xl text-center text-white">
+          The best data, from the top sites
+        </h2>
+        <div className="overflow-hidden mt-9 before:content-[''] after:content-[''] before:absolute after:absolute before:h-full after:h-full before:w-5 after:w-20 relative after:right-0 before:left-0 before:top-0 after:top-0 before:bg-[linear-gradient(to_right,#000,rgba(0,0,0,0))] after:bg-[linear-gradient(to_left,#000,rgba(0,0,0,0))] ">
+          <div className="flex gap-16 justify-center">
+            {images.map(({ src, alt }) => (
+              <Image 
+                key={alt}
+                alt={alt}
+                src={src}
+                width={100}
+                height={100}
+                className="object-contain"
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };

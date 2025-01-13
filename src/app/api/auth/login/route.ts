@@ -1,0 +1,46 @@
+import { NextResponse } from "next/server";
+import { compare } from "bcrypt";
+import { prisma } from "@/lib/prisma";
+import { sign } from "jsonwebtoken";
+
+export async function POST(request: Request) {
+  try {
+    const { email, password } = await request.json();
+
+    // Check if user exists
+    const user = await prisma.user.findUnique({
+      where: { email }
+    });
+
+    if (!user) {
+      return NextResponse.json(
+        { error: "User does not exist" },
+        { status: 404 }
+      );
+    }
+
+    // Verify password
+    const isPasswordValid = await compare(password, user.password);
+    if (!isPasswordValid) {
+      return NextResponse.json(
+        { error: "Invalid password" },
+        { status: 401 }
+      );
+    }
+
+    // Generate JWT token
+    const token = sign(
+      { userId: user.id, email: user.email },
+      process.env.JWT_SECRET!,
+      { expiresIn: "1d" }
+    );
+
+    return NextResponse.json({ token, user: { id: user.id, email: user.email, name: user.name } });
+  } catch (error) {
+    console.error("Login error:", error);
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
+  }
+} 
