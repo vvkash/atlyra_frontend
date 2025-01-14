@@ -7,24 +7,24 @@ import MinusIcon from "../assets/icons/minus.svg";
 
 const items = [
   {
-    question: "What payment methods do you accept?",
+    question: "give me the rundown, quickly",
     answer:
-      "We accept all major credit cards, PayPal, and various other payment methods depending on your location. Please contact our support team for more information on accepted payment methods in your region.",
+      "Sure, Atlyra allows you to check price changes, avaliability and data from over 20 of the most indemand retailers online, also allowing you to get notified via SMS, discord and email with a in house dashboard and logic.",
   },
   {
-    question: "How does the pricing work for teams?",
+    question: "How safe is my info?",
     answer:
-      "Our pricing is per user, per month. This means you only pay for the number of team members you have on your account. Discounts are available for larger teams and annual subscriptions.",
+      "We makes sure customer safety and privacy is in the best hands, we use end-to-end ecyrption and do not share user data with anyone. ",
   },
   {
-    question: "Can I change my plan later?",
+    question: "How do you guys proft?",
     answer:
-      "Yes, you can upgrade or downgrade your plan at any time. Changes to your plan will be prorated and reflected in your next billing cycle.",
+      "As of now, we make money but the affilate links that get sent. if a user purchases with the link we get a peice of the commision. allowing Atlyra and all of its features to be used for free.",
   },
   {
-    question: "Is my data secure?",
+    question: "I have questions.",
     answer:
-      "Security is our top priority. We use state-of-the-art encryption and comply with the best industry practices to ensure that your data is stored securely and accessed only by authorized users.",
+      "send them to atlyralabs@gmail.com and we will get back to you as quickly as possible.",
   },
 ];
 
