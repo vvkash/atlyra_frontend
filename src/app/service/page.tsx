@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import logoImage from '../../assets/images/Atlyra_logo_processed.png';
 import StanleyLogo from "../../assets/images/Stanley1.png";
+import { MonitoringConfig } from '@/types/config';
 
 export default function ServicePage() {
   const router = useRouter();
@@ -21,7 +22,7 @@ export default function ServicePage() {
   const handleSave = async () => {
     setIsSubmitting(true);
     try {
-      const config = {
+      const config: MonitoringConfig = {
         inputType,
         url,
         keywords,
@@ -30,7 +31,7 @@ export default function ServicePage() {
         notificationType,
         contactInfo,
         dateAdded: new Date().toISOString(),
-        status: "active"
+        status: "active" as const
       };
       
       const existingConfigs = JSON.parse(localStorage.getItem('monitoringConfigs') || '[]');

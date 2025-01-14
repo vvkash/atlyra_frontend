@@ -4,10 +4,10 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import logoImage from '../../assets/images/Atlyra_logo_processed.png';
-import { MonitoringConfig } from '../../types/config';
+import { MonitoringConfig } from '@/types/config';
 
 export default function Dashboard() {
-  const [configurations, setConfigurations] = useState([]);
+  const [configurations, setConfigurations] = useState<MonitoringConfig[]>([]);
 
   useEffect(() => {
     try {
