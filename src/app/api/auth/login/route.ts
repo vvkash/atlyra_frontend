@@ -21,7 +21,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Verify password
     const isPasswordValid = await compare(password, user.password);
     if (!isPasswordValid) {
       return NextResponse.json(
@@ -30,7 +29,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Generate JWT token
     const token = sign(
       { userId: user.id, email: user.email },
       process.env.JWT_SECRET!,
@@ -38,10 +36,11 @@ export async function POST(request: Request) {
     );
 
     return NextResponse.json({ token, user: { id: user.id, email: user.email, name: user.name } });
-  } catch (error) {
-    console.error("Login error:", error);
+  } catch (err) {
+    console.error("Login error:", err);
+    const error = err as Error;
     return NextResponse.json(
-      { error: "Internal server error", details: error.message },
+      { error: "Internal server error", details: error?.message || "Unknown error" },
       { status: 500 }
     );
   }

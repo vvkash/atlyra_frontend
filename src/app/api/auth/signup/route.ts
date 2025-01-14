@@ -38,10 +38,11 @@ export async function POST(request: Request) {
       { message: "User created successfully", userId: user.id },
       { status: 201 }
     );
-  } catch (error) {
-    console.error("Server error:", error);
+  } catch (err) {
+    console.error("Server error:", err);
+    const error = err as Error;
     return NextResponse.json(
-      { error: "Error creating user" },
+      { error: "Error creating user", details: error?.message || "Unknown error" },
       { status: 500 }
     );
   }
