@@ -7,6 +7,8 @@ import { useRouter } from 'next/navigation';
 import logoImage from '../../assets/images/Atlyra_logo_processed.png';
 import StanleyLogo from "../../assets/images/Stanley1.png";
 import { MonitoringConfig } from '@/types/config';
+import { NotificationSelect } from '@/components/NotificationSelect';
+import { PriceSlider } from '@/components/PriceSlider';
 
 export default function ServicePage() {
   const router = useRouter();
@@ -146,45 +148,22 @@ export default function ServicePage() {
 
         {monitoringType === "price" && (
           <div className="mb-12">
-            <input
-              type="number"
-              placeholder="Enter price threshold"
-              className="w-full p-3 rounded-lg bg-[#1a1a1a] border border-[#333] text-center"
-              value={priceThreshold || ""}
-              onChange={(e) => setPriceThreshold(Number(e.target.value))}
+            <PriceSlider
+              value={priceThreshold || 0}
+              onChange={(value) => setPriceThreshold(value)}
+              min={0}
+              max={1000}
             />
           </div>
         )}
 
         {monitoringType && (
-          <div className="mb-12 text-center">
-            <h3 className="text-2xl font-bold mb-6">How would you like to be notified?</h3>
-            <div className="flex gap-4 justify-center flex-wrap">
-              <button
-                className={`px-6 py-3 rounded-lg ${
-                  notificationType === "email" ? "bg-[#ADD8E6] text-black" : "bg-[#333]"
-                }`}
-                onClick={() => setNotificationType("email")}
-              >
-                Email
-              </button>
-              <button
-                className={`px-6 py-3 rounded-lg ${
-                  notificationType === "discord" ? "bg-[#ADD8E6] text-black" : "bg-[#333]"
-                }`}
-                onClick={() => setNotificationType("discord")}
-              >
-                Discord
-              </button>
-              <button
-                className={`px-6 py-3 rounded-lg ${
-                  notificationType === "sms" ? "bg-[#ADD8E6] text-black" : "bg-[#333]"
-                }`}
-                onClick={() => setNotificationType("sms")}
-              >
-                SMS
-              </button>
-            </div>
+          <div className="mb-12">
+            <h3 className="text-2xl font-bold mb-6 text-center">How would you like to be notified?</h3>
+            <NotificationSelect
+              value={notificationType || ''}
+              onChange={setNotificationType}
+            />
           </div>
         )}
 
