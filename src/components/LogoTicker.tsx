@@ -19,11 +19,23 @@ export const LogoTicker = () => {
         <h2 className="text-xl text-center text-white">
           The best data, from the top sites
         </h2>
-        <div className="flex overflow-hidden mt-9 before:content-[''] after:content-[''] before:absolute after:absolute before:h-full after:h-full before:w-5 after:w-20 relative after:right-0 before:left-0 before:top-0 after:top-0 before:bg-[linear-gradient(to_right,#000,rgba(0,0,0,0))] after:bg-[linear-gradient(to_left,#000,rgba(0,0,0,0))] ">
-          <motion.div transition={{ duration: 20, ease: "linear", repeat: Infinity, }} initial={{ translateX: 0 }} animate={{ translateX: "-50%"}} className="flex gap-16 flex-none pr-16">
+        <div className="flex overflow-hidden mt-9 relative">
+          <motion.div 
+            animate={{ 
+              x: [0, -1035]  // Adjust this value based on the total width of your logos
+            }} 
+            transition={{ 
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear",
+              repeatType: "loop"
+            }}
+            className="flex gap-16 flex-nowrap"
+          >
+            {/* First set of logos */}
             {images.map(({ src, alt }) => (
               <Image 
-                key={alt}
+                key={`${alt}-1`}
                 alt={alt}
                 src={src}
                 width={100}
@@ -31,9 +43,10 @@ export const LogoTicker = () => {
                 className="object-contain"
               />
             ))}
+            {/* Second set of logos */}
             {images.map(({ src, alt }) => (
               <Image 
-                key={alt}
+                key={`${alt}-2`}
                 alt={alt}
                 src={src}
                 width={100}
@@ -41,9 +54,10 @@ export const LogoTicker = () => {
                 className="object-contain"
               />
             ))}
+            {/* Third set of logos */}
             {images.map(({ src, alt }) => (
               <Image 
-                key={alt}
+                key={`${alt}-3`}
                 alt={alt}
                 src={src}
                 width={100}
