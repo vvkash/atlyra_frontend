@@ -45,6 +45,9 @@ export default function AuthPage() {
       
       if (response.ok) {
         console.log("Success:", data);
+        if (isLogin && data.token) {
+          localStorage.setItem('token', data.token);
+        }
         router.push("/dashboard");
       } else {
         setError(data.error || "An error occurred");
