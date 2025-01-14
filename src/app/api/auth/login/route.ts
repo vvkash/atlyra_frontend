@@ -7,12 +7,14 @@ export async function POST(request: Request) {
   try {
     const { email, password } = await request.json();
 
-    // Check if user exists
+    console.log('Attempting login for:', email);
+
     const user = await prisma.user.findUnique({
       where: { email }
     });
 
     if (!user) {
+      console.log('User not found:', email);
       return NextResponse.json(
         { error: "User does not exist" },
         { status: 404 }
@@ -39,7 +41,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("Login error:", error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: "Internal server error", details: error.message },
       { status: 500 }
     );
   }
