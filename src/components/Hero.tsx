@@ -41,7 +41,7 @@ export const Hero = () => {
       <div className="flex justify-center mt-8">
         <Link href="/auth">
           <button className="bg-white text-black py-3 px-5 rounded-lg font-medium">
-            Let's Go!
+            Let&apos;s Go!
           </button>
         </Link>
       </div>
