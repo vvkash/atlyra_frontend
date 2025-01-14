@@ -2,19 +2,19 @@ import EcosystemIcon from "../assets/icons/ecosystem.svg";
 
 const features = [
   {
-    title: "Integration Ecosystem",
+    title: "Notifications",
     description:
-      "Enhance your productivity by connecting with your tools, keeping your essentials in one place.",
+      "Get Notified before everyone else in realtime, we offer Discord, SMS and email notification systems.",
   },
   {
-    title: "Goal Setting and Tracking",
+    title: "Sites",
     description:
-      "Define and track your goals, breaking down objectives into achievable tasks to keep your targets in sight.",
+      "Pick from over 20 of the most popular sites, your favorite products at the best price at the perfect time.",
   },
   {
-    title: "Secure Data Encryption",
+    title: "Data",
     description:
-      "With end-to-end encryption, your data is securely stored and protected from unauthorized access.",
+      "Moniter historical price changes and stock information right from the dashboard.",
   },
 ];
 

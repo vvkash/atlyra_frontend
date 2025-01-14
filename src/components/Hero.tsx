@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import ArrowIcon from "../assets/icons/arrow-w.svg";
 import cursorImage from "../assets/images/cursor.png";
@@ -6,6 +8,7 @@ import queen from "../assets/images/queen.png";
 import horse from "../assets/images/horse.png";
 import peice from "../assets/images/peice.png";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 
 export const Hero = () => {
@@ -17,20 +20,27 @@ export const Hero = () => {
           <h1 className="text-7xl sm:text-9xl font-bold tracking-tighter text-center">
             A step ahead, always
           </h1>
-          <Image 
-            src={horse} 
-            height="200" 
-            width="200" 
-            alt="" 
-            className="absolute top-[56px] right-[-20%] hidden lg:inline"
-          />
-          <Image 
-            src={peice} 
-            height="200" 
-            width="200" 
-            alt="" 
-            className="absolute top-[108px] left-[-20%] hidden lg:inline"
-          />
+          <motion.div className="absolute top-[56px] right-[-20%] hidden lg:inline" drag
+            >
+            <Image 
+              src={horse} 
+              height="200" 
+              width="200" 
+              alt="" 
+              className="max-w-none"
+              draggable="false"
+            />
+          </motion.div>
+          <motion.div className="absolute top-[108px] left-[-20%] hidden lg:inline" drag >
+            <Image 
+              src={peice} 
+              height="200" 
+              width="200" 
+              alt="" 
+              className="max-w-none"
+              draggable="false"
+            />
+          </motion.div>
         </div>
       </div>
       <div className="flex justify-center">
