@@ -13,21 +13,26 @@ export default function ServicePage() {
   const [inputType, setInputType] = useState<"url" | "keywords">("url");
   const [url, setUrl] = useState("");
   const [keywords, setKeywords] = useState("");
-  const [monitoringType, setMonitoringType] = useState<"price" | "availability">();
+  const [monitoringType, setMonitoringType] = useState<MonitoringConfig["monitoringType"] | undefined>(undefined);
   const [priceThreshold, setPriceThreshold] = useState<number>();
-  const [notificationType, setNotificationType] = useState<"email" | "discord" | "sms">();
+  const [notificationType, setNotificationType] = useState<MonitoringConfig["notificationType"] | undefined>(undefined);
   const [contactInfo, setContactInfo] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSave = async () => {
     setIsSubmitting(true);
     try {
+      // Validate required fields
+      if (!monitoringType || !notificationType) {
+        throw new Error("Missing required fields");
+      }
+
       const config: MonitoringConfig = {
         inputType,
-        url,
-        keywords,
+        url: inputType === "url" ? url : undefined,
+        keywords: inputType === "keywords" ? keywords : undefined,
         monitoringType,
-        priceThreshold,
+        priceThreshold: monitoringType === "price" ? priceThreshold : undefined,
         notificationType,
         contactInfo,
         dateAdded: new Date().toISOString(),
